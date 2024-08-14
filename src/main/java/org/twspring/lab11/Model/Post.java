@@ -39,7 +39,6 @@ public class Post {
 
     @Column(columnDefinition = "DATETIME DEFAULT TIMESTAMP(CURRENT_DATE)")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @Null(message = "Date is automatically calculated in the system, please don't enter a date")
     private final LocalDate publish_date = LocalDate.now();
 
 }

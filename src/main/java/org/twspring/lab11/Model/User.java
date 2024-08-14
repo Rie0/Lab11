@@ -27,7 +27,7 @@ public class User {
     @Column(columnDefinition = "VARCHAR(25) NOT NULL")
     @Size(min = 8, max = 25, message = "Password should have between 8 to 25 characters")
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,25}$"
-            , message = "Password must have an upper case and lowercase letter, numbers, special characters, and no space")
+            , message = "Password must have an upper case and lowercase letter, numbers, special characters, and no spaces")
     @NotEmpty(message = "Password cannot be empty")
     private String password;
 
@@ -38,6 +38,5 @@ public class User {
 
     @Column(columnDefinition = "DATETIME DEFAULT TIMESTAMP(CURRENT_DATE)")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @Null(message = "Date is automatically calculated in the system, please don't enter a date")
-    private final LocalDate registration_date = LocalDate.now(); ;
+    private  LocalDate registration_date = LocalDate.now(); ;
 }
