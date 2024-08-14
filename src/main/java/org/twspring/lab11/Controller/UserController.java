@@ -20,6 +20,11 @@ public class UserController {
     public ResponseEntity getAllUsers() {
         return ResponseEntity.status(200).body(userService.getAllUsers());
     }
+    //ADDITIONAL
+    @GetMapping("/get/by_email/{email}")
+    public ResponseEntity getUserByEmail(@PathVariable String email) {
+        return ResponseEntity.status(200).body(userService.getUserByEmail(email));
+    }
     //===========================POST===========================
     @PostMapping("/add")
     public ResponseEntity addUser(@Valid @RequestBody User user, Errors errors) {

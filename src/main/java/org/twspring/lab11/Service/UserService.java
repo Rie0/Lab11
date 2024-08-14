@@ -22,6 +22,15 @@ public class UserService {
         return users;
     }
 
+    //ADDITIONAL
+    public User getUserByEmail(String email) {
+        User u = userRepository.findUserByEmail(email);
+        if (u == null){
+            throw new ApiException("User not found");
+        }
+        return u;
+    }
+
     //Basic POST
     public void addUser(User user) {
         userRepository.save(user);

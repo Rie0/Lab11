@@ -9,4 +9,7 @@ import org.twspring.lab11.Model.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT u from User u where u.user_id=?1")
     User findUserByUser_id(Integer id);
+
+    //ADDITIONAL ENDPOINT8
+    User findUserByEmail(String email);
 }

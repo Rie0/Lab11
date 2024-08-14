@@ -33,7 +33,7 @@ public class Comment {
     @Positive(message = "Post Id cannot be a zero or a negative number")
     private Integer post_id;
 
-    @Column(columnDefinition = "VARCHAR(150) NOT NULL UNIQUE")
+    @Column(columnDefinition = "VARCHAR(150) NOT NULL")
     @Size(min = 10, max = 150, message = "Content must have between 10 to 150 characters")
     private String content;
 

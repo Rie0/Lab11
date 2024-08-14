@@ -9,6 +9,7 @@ import org.twspring.lab11.Repository.CategoryRepository;
 import org.twspring.lab11.Repository.PostRepository;
 import org.twspring.lab11.Repository.UserRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -21,6 +22,35 @@ public class PostService {
     //Basic GET
     public List<Post> getAllPosts   () {
         List<Post> posts = postRepository.findAll();
+        if (posts.isEmpty()) {
+            throw new ApiException("No posts found");
+        }
+        return posts;
+    }
+    //ADDITIONAL
+    public List<Post> getPostsByContentContaining(String content) {
+        List<Post> posts = postRepository.findPostByContentContaining(content);
+        if (posts.isEmpty()) {
+            throw new ApiException("No posts found");
+        }
+        return posts;
+    }
+    public List<Post> getPostsByPublish_dateDescOrder() {
+        List<Post> posts=postRepository.findPostsByPublish_dateDescOrder();
+        if (posts.isEmpty()) {
+            throw new ApiException("No posts found");
+        }
+        return posts;
+    }
+    public List<Post> getPostsByPublish_dateAfter(LocalDate publish_date) {
+        List<Post> posts=postRepository.findPostByPublish_dateAfter(publish_date);
+        if (posts.isEmpty()) {
+            throw new ApiException("No posts found");
+        }
+        return posts;
+    }
+    public List<Post> getPostsByCategory_id(Integer category_id) {
+        List<Post> posts = postRepository.findPostByCategory_id(category_id);
         if (posts.isEmpty()) {
             throw new ApiException("No posts found");
         }

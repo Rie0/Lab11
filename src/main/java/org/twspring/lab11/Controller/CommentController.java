@@ -19,6 +19,15 @@ public class CommentController {
     public ResponseEntity getAllComments() {
         return ResponseEntity.status(200).body(commentService.getAllComments());
     }
+    //ADDITIONAL GET
+    @GetMapping("/get/by_post_id/{post_id}")
+    public ResponseEntity getCommentsByPostId(@PathVariable Integer post_id) {
+            return ResponseEntity.status(200).body(commentService.getCommentByPostId(post_id));
+    }
+    @GetMapping("/get/by_user_id/{user_id}")
+    public ResponseEntity getCommentsByUserId(@PathVariable Integer user_id) {
+        return ResponseEntity.status(200).body(commentService.getCommentByUserId(user_id));
+    }
     //===========================POST===========================
     @PostMapping("/add")
     public ResponseEntity addComment(@Valid @RequestBody Comment comment, Errors errors) {

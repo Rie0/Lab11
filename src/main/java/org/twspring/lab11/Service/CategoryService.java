@@ -22,6 +22,15 @@ public class CategoryService {
         return categories;
     }
 
+    //Additional GET
+    public Category getCategoryByName(String name) {
+        Category c = categoryRepository.findCategoryByName(name);
+        if (c == null) {
+            throw new ApiException("No category found");
+        }
+        return c;
+    }
+
     //Basic POST
     public void addCategory(Category category) {
          categoryRepository.save(category);

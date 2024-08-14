@@ -22,6 +22,11 @@ public class CategoryController {
     public ResponseEntity getAllCategories() {
         return ResponseEntity.status(200).body(categoryService.getAllCategories());
     }
+    //ADDITIONAL
+    @GetMapping("get/by_name/{name}")
+    public ResponseEntity getCategoryByName(@PathVariable String name) {
+        return ResponseEntity.status(200).body(categoryService.getCategoryByName(name));
+    }
     //===========================POST===========================
     @PostMapping("/add")
     public ResponseEntity addCategory(@Valid @RequestBody Category category, Errors errors) {

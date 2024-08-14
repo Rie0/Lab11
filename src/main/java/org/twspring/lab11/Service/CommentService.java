@@ -25,6 +25,22 @@ public class CommentService {
         }
         return comments;
     }
+    //ADDITIONAL GET
+    public List<Comment> getCommentByPostId(Integer post_id) {
+        List<Comment> comments = commentRepository.findCommentByPost_id(post_id);
+        if (comments.isEmpty()) {
+            throw new ApiException("No comments found");
+        }
+        return comments;
+    }
+    public List<Comment> getCommentByUserId(Integer user_id) {
+        List<Comment> comments = commentRepository.findCommentByUser_id(user_id);
+        if (comments.isEmpty()) {
+            throw new ApiException("No comments found");
+        }
+        return comments;
+    }
+
     //Basic POST
     public void addComment(Comment comment) {
         if (userRepository.findUserByUser_id(comment.getUser_id())==null){
